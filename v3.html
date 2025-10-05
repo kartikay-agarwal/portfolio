@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hooman Pomodoro</title>
+<style>
+body { margin:0; height:100vh; display:flex; justify-content:center; align-items:center; font-family:"Poppins",sans-serif; transition: background 0.5s, color 0.5s; overflow:hidden; }
+.container { display:flex; justify-content:center; align-items:center; }
+.timer-panel {
+  flex: 1;
+  border: 3px solid var(--accent);
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  min-width: 450px;
+  max-width: 600px;
+  background: var(--panel-bg);
+  transition: none;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+.progress-ring { position:relative; width:100%; max-width:300px; aspect-ratio:1/1; }
+.timer-panel.active {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 70px;
+  min-width: 600px;
+  max-width: 700px;
+}
+.progress-ring svg { width:100%; height:100%; }
+.progress-ring circle { fill:none; stroke-width:15; transform:rotate(-90deg); transform-origin:50% 50%; transition:stroke-dashoffset 1s linear; }
+.progress-bg { stroke:#bbb; }
+.progress-bar { stroke:var(--accent); stroke-linecap:round; }
+#timer { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:clamp(40px,10vw,100px); font-weight:bold; color:var(--accent); text-align:center; }
+.controls button { background:var(--accent); border:none; color:white; padding:12px 20px; margin:5px; border-radius:12px; font-size:16px; cursor:pointer; transition: transform 0.2s; }
+.controls button:hover { transform: scale(1.1); }
+.session-count { margin-top:10px; font-size:18px; color: var(--accent); }
+
+/* Floating Icons */
+.floating-icons { position:fixed; top:50%; right:20px; display:flex; flex-direction:column; gap:15px; z-index:10; }
+.floating-icons button { width:50px; height:50px; border-radius:50%; font-size:24px; display:flex; justify-content:center; align-items:center; cursor:pointer; border:none; background:var(--accent); color:white; transition: transform 0.3s; }
+.floating-icons button:hover { transform: scale(1.2); }
+
+/* Popup Panels */
+.popup-panel { position:fixed; right:80px; top:50%; transform:translateY(-50%); background:var(--panel-bg); border-radius:15px; padding:20px; box-shadow:0 0 12px rgba(0,0,0,0.2); max-height:0; overflow:hidden; transition:max-height 0.3s, opacity 0.3s; opacity:0; width:300px; z-index:9; }
+.popup-panel.panel-open { max-height:600px; opacity:1; }
+
+/* To-Do Styling */
+.todo input { width:70%; padding:10px; border-radius:8px; border:none; margin-right:10px; }
+
+#addTask {
+  background-color: #ff4da6;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+#addTask:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+ul { list-style:none; padding:0; max-height:300px; overflow-y:auto; }
+li { background: var(--task-bg); margin:8px 0; padding:10px; border-radius:8px; display:flex; justify-content:space-between; align-items:center; color: var(--text); cursor:grab; }
+li.done { text-decoration: line-through; opacity:0.6; }
+li:hover { transform: translateX(5px); }
+
+/* Task buttons ✔ ✖ */
+li button {
+  background-color: #ff4da6;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  margin-left: 8px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+li button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.variant-btn { background:#ff4da6; color:white; border:none; border-radius:12px; padding:10px 20px; margin:5px; cursor:pointer; font-size:16px; }
+.variant-btn:hover { transform: scale(1.1); }
+
+.theme-btn { position:absolute; top:20px; right:20px; background: var(--accent); border:none; color:white; padding:10px 16px; border-radius:50%; font-size:16px; cursor:pointer; transition: transform 0.3s; z-index:11; }
+.theme-btn:hover { transform: rotate(180deg); }
+
+/* === Themes === */
+body.black { --bg:#0d0d0d; --text:white; --accent:#ff4da6; --panel-bg:#1a1a1a; --task-bg:#2a2a2a; background:var(--bg); color:var(--text); }
+body.pink { --bg:#fff0f6; --text:#222; --accent:#ff4da6; --panel-bg:#ffe6f0; --task-bg:#ffd6eb; background:var(--bg); color:var(--text); }
+</style>
+</head>
+<body class="pink">
+
+<button class="theme-btn" id="themeToggle">🌓</button>
+
+<div class="container">
+  <div class="timer-panel">
+    <div class="progress-ring">
+      <svg viewBox="0 0 300 300">
+        <circle class="progress-bg" cx="150" cy="150" r="135"/>
+        <circle class="progress-bar" cx="150" cy="150" r="135"/>
+      </svg>
+      <div id="timer">60:00</div>
+    </div>
+    <h1>🍓 Hooman Pomodoro</h1>
+    <div class="controls">
+      <button id="start">Start</button>
+      <button id="stop">Stop</button>
+      <button id="reset">Reset</button>
+    </div>
+    <div class="session-count">Sessions done: <span id="sessions">0</span></div>
+  </div>
+</div>
+
+<!-- Floating Buttons -->
+<div class="floating-icons">
+  <button id="toggleMusic">🎵</button>
+  <button id="toggleTodo">📋</button>
+  <button id="toggleStats">📊</button>
+  <button id="toggleVariants">⚙</button>
+</div>
+
+<!-- Popups -->
+<div class="popup-panel" id="musicPopup">
+  <h2>🎵 Music</h2>
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/43JYo1yQPDXHuyYUWcWBeG" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media"></iframe>
+</div>
+
+<div class="popup-panel" id="todoPopup">
+  <h2>📋 To-Do List</h2>
+  <input type="text" id="taskInput" placeholder="Add a task...">
+  <button id="addTask">Add</button>
+  <ul id="taskList"></ul>
+</div>
+
+<div class="popup-panel" id="statsPopup">
+  <h2>📊 Stats</h2>
+  <p>Today's Sessions: <span id="todaySessions">0</span></p>
+  <p>Current Streak: <span id="currentStreak">0</span> days</p>
+  <div id="statsGraph" style="display:flex; gap:5px; margin-top:10px; align-items:flex-end; height:100px;"></div>
+</div>
+
+<div class="popup-panel" id="variantsPopup">
+  <h2>⚙ Pomodoro Variants</h2>
+  <button class="variant-btn" data-focus="25" data-break="5">25/5</button>
+  <button class="variant-btn" data-focus="50" data-break="10">50/10</button>
+  <button class="variant-btn" data-focus="60" data-break="10">60/10</button>
+</div>
+
+<script>
+// Timer
+let timerDisplay = document.getElementById("timer");
+let startBtn = document.getElementById("start");
+let stopBtn = document.getElementById("stop");
+let resetBtn = document.getElementById("reset");
+let sessionsDone = document.getElementById("sessions");
+
+let timer, isRunning=false, onBreak=false;
+let sessionCount=0;
+let focusTime=60*60, breakTime=10*60, timeLeft=focusTime;
+
+const circle = document.querySelector(".progress-bar");
+const radius = circle.r.baseVal.value;
+const circumference = 2*Math.PI*radius;
+circle.style.strokeDasharray=circumference;
+circle.style.strokeDashoffset=circumference;
+function setProgress(percent){ circle.style.strokeDashoffset=circumference-(percent/100)*circumference; }
+
+function updateDisplay(){
+  let minutes=Math.floor(timeLeft/60);
+  let seconds=timeLeft%60;
+  timerDisplay.textContent=`${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
+  let total=onBreak?breakTime:focusTime;
+  setProgress(((total-timeLeft)/total)*100);
+}
+
+// Sound
+const beep = new Audio("https://www.soundjay.com/buttons/sounds/beep-07.mp3");
+
+function startTimer(){
+  if(!isRunning){
+    isRunning=true;
+    document.querySelector('.timer-panel').classList.add('active');
+    timer=setInterval(()=>{
+      if(timeLeft>0){ timeLeft--; updateDisplay(); }
+      else{
+        clearInterval(timer); isRunning=false; beep.play();
+        if(!onBreak){
+          sessionCount++; sessionsDone.textContent=sessionCount; updateStats();
+          alert("Focus done! 🎉 Time for a break!");
+          onBreak=true; timeLeft=breakTime; startTimer();
+        }else{
+          alert("Break over! Back to focus! 💪");
+          onBreak=false; timeLeft=focusTime; updateDisplay();
+        }
+      }
+    },1000);
+  }
+}
+
+startBtn.onclick=startTimer;
+stopBtn.onclick=()=>{ clearInterval(timer); isRunning=false; document.querySelector('.timer-panel').classList.remove('active'); };
+resetBtn.onclick=()=>{ clearInterval(timer); isRunning=false; onBreak=false; timeLeft=focusTime; updateDisplay(); document.querySelector('.timer-panel').classList.remove('active'); };
+
+// Floating popups
+const toggleMusic=document.getElementById('toggleMusic');
+const toggleTodo=document.getElementById('toggleTodo');
+const toggleStats=document.getElementById('toggleStats');
+const toggleVariants=document.getElementById('toggleVariants');
+const musicPopup=document.getElementById('musicPopup');
+const todoPopup=document.getElementById('todoPopup');
+const statsPopup=document.getElementById('statsPopup');
+const variantsPopup=document.getElementById('variantsPopup');
+
+toggleMusic.onclick=()=>musicPopup.classList.toggle('panel-open');
+toggleTodo.onclick=()=>todoPopup.classList.toggle('panel-open');
+toggleStats.onclick=()=>statsPopup.classList.toggle('panel-open');
+toggleVariants.onclick=()=>variantsPopup.classList.toggle('panel-open');
+
+// Theme
+document.getElementById("themeToggle").onclick=()=>{ document.body.classList.toggle("pink"); document.body.classList.toggle("black"); };
+
+// To-Do
+function addTask(inputId,listId){
+  let input=document.getElementById(inputId);
+  let list=document.getElementById(listId);
+  if(input.value.trim()!==""){
+    let li=document.createElement("li"); li.textContent=input.value; li.draggable=true;
+    let completeBtn=document.createElement("button"); completeBtn.textContent="✔"; completeBtn.onclick=()=>li.classList.toggle("done");
+    let deleteBtn=document.createElement("button"); deleteBtn.textContent="✖"; deleteBtn.onclick=()=>li.remove();
+    li.appendChild(completeBtn); li.appendChild(deleteBtn);
+    list.appendChild(li); input.value="";
+  }
+}
+document.getElementById("addTask").onclick=()=>addTask("taskInput","taskList");
+
+// Drag & Drop
+function enableDrag(listId){
+  let list=document.getElementById(listId); let dragged=null;
+  list.addEventListener("dragstart", e=>dragged=e.target);
+  list.addEventListener("dragover", e=>e.preventDefault());
+  list.addEventListener("drop", e=>{ if(e.target.tagName==="LI" && dragged) list.insertBefore(dragged, e.target.nextSibling); });
+}
+enableDrag("taskList");
+
+// Variants
+document.querySelectorAll('.variant-btn').forEach(btn=>{
+  btn.onclick=()=>{
+    focusTime=parseInt(btn.dataset.focus)*60;
+    breakTime=parseInt(btn.dataset.break)*60;
+    timeLeft=focusTime;
+    updateDisplay();
+  }
+});
+
+// Stats
+function updateStats(){
+  document.getElementById("todaySessions").textContent = sessionCount;
+  document.getElementById("currentStreak").textContent = sessionCount;
+
+  const graph = document.getElementById("statsGraph");
+  graph.innerHTML="";
+
+  for(let i=0;i<sessionCount;i++){
+    const bar = document.createElement("div");
+    bar.style.width="20px";
+    bar.style.height="0px";
+    let opacity = 0.5 + (i/sessionCount)*0.5;
+    bar.style.background = `rgba(255,77,166, ${opacity})`;
+    bar.style.borderRadius="4px";
+    bar.style.transition="height 0.5s ease";
+
+    graph.appendChild(bar);
+
+    setTimeout(()=>{ bar.style.height=`${20+i*10}px`; }, 100*i);
+  }
+}
+
+// Click outside to close
+document.addEventListener('click', (e)=>{
+  if(!musicPopup.contains(e.target) && e.target!==toggleMusic) musicPopup.classList.remove('panel-open');
+  if(!todoPopup.contains(e.target) && e.target!==toggleTodo) todoPopup.classList.remove('panel-open');
+  if(!statsPopup.contains(e.target) && e.target!==toggleStats) statsPopup.classList.remove('panel-open');
+  if(!variantsPopup.contains(e.target) && e.target!==toggleVariants) variantsPopup.classList.remove('panel-open');
+});
+
+updateDisplay();
+</script>
+</body>
+</html>
