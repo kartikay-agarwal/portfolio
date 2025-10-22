@@ -11,17 +11,14 @@
       "use": "@vercel/node"
     }
   ],
-  "routes": [
-    { "src": "/ndmm/api/(.*)", "dest": "/ndmm/api/$1.js" },
+  "rewrites": [
+    { "source": "/ndmm/api/:match*", "destination": "/ndmm/api/:match*.js" },
 
-    { "src": "/ndmm/(.*)", "dest": "/ndmm/frontend/build/$1" },
+    { "source": "/ndmm", "destination": "/ndmm/frontend/build/index.html" },
+    { "source": "/ndmm/:path*", "destination": "/ndmm/frontend/build/:path*" },
 
-    { "src": "/:folder(pomo|kartikay|hooman|olaf)$", "dest": "/:folder/index.html" },
-    { "src": "/:folder(pomo|kartikay|hooman|olaf)/:path*", "dest": "/:folder/:path*" },
-
-    { "src": "/(.*\\.(js|css|png|jpg|jpeg|svg|webp|woff2|woff|ttf))", "dest": "/$1" },
-
-    { "src": "/(.*)", "dest": "/$1" }
+    { "source": "/:folder(pomo|kartikay|hooman|olaf)", "destination": "/:folder/index.html" },
+    { "source": "/:folder(pomo|kartikay|hooman|olaf)/:path*", "destination": "/:folder/:path*" }
   ],
   "headers": [
     {
