@@ -1,20 +1,6 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "ndmm/frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "build" }
-    },
-    {
-      "src": "ndmm/api/**/*.js",
-      "use": "@vercel/node"
-    }
-  ],
   "rewrites": [
-    { "source": "/ndmm/api/:match*", "destination": "/ndmm/api/:match*.js" },
-    { "source": "/ndmm", "destination": "/ndmm/frontend/build/index.html" },
-    { "source": "/ndmm/:path*", "destination": "/ndmm/frontend/build/:path*" },
     { "source": "/:folder(pomo|kartikay|hooman|olaf)", "destination": "/:folder/index.html" },
     { "source": "/:folder(pomo|kartikay|hooman|olaf)/:path*", "destination": "/:folder/:path*" }
   ],
