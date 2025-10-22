@@ -4,7 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Hooman Pomodoro</title>
+
+  <!-- 👇 Add this line to make relative URLs resolve under /pomo/ -->
+  <base href="/pomo/">
+
+  <!-- 👇 Keep these paths relative -->
   <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
 </head>
 <body class="pink" id="appRoot">
   <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">🌓</button>
@@ -68,7 +74,5 @@
 
   <!-- Toast -->
   <div id="toast" role="status" aria-live="polite"></div>
-
-  <script src="script.js" defer></script>
 </body>
 </html>
