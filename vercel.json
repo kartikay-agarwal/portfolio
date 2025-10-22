@@ -1,16 +1,17 @@
 {
   "version": 2,
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/pomo(?:/)?$", "dest": "/pomo/index.html" },
-    { "src": "/pomo/(.*)", "dest": "/pomo/$1" },
-    { "src": "/(.*)", "dest": "/$1" }
+  "rewrites": [
+    { "source": "/:folder(pomo|kartikay|hooman|olaf)", "destination": "/:folder/index.html" },
+    { "source": "/:folder(pomo|kartikay|hooman|olaf)/:path*", "destination": "/:folder/:path*" }
   ],
   "headers": [
     {
-      "source": "/(.*)\\.(js|css|png|jpg|jpeg|svg|webp|woff2)",
+      "source": "/(.*)\\.(js|css|png|jpg|jpeg|svg|webp|woff2|woff|ttf)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     }
   ]
