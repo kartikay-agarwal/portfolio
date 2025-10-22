@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "routes": [
+    { "handle": "filesystem" },
+
+    // Serve /pomo and any /pomo/* from the pomo folder
+    { "src": "/pomo(?:/)?$", "dest": "/pomo/index.html" },
+    { "src": "/pomo/(.*)", "dest": "/pomo/$1" },
+
+    // Example other sub-app folder (uncomment / use if needed)
+    // { "src": "/otherapp(?:/)?$", "dest": "/otherapp/index.html" },
+    // { "src": "/otherapp/(.*)", "dest": "/otherapp/$1" },
+
+    // All other requests fall back to normal root behaviour
+    { "handle": "rewrite", "src": "/(.*)", "dest": "/$1" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)\\.(js|css|png|jpg|jpeg|svg|webp|woff2)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ]
+}
