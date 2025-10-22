@@ -13,10 +13,8 @@
   ],
   "rewrites": [
     { "source": "/ndmm/api/:match*", "destination": "/ndmm/api/:match*.js" },
-
     { "source": "/ndmm", "destination": "/ndmm/frontend/build/index.html" },
     { "source": "/ndmm/:path*", "destination": "/ndmm/frontend/build/:path*" },
-
     { "source": "/:folder(pomo|kartikay|hooman|olaf)", "destination": "/:folder/index.html" },
     { "source": "/:folder(pomo|kartikay|hooman|olaf)/:path*", "destination": "/:folder/:path*" }
   ],
@@ -24,7 +22,10 @@
     {
       "source": "/(.*)\\.(js|css|png|jpg|jpeg|svg|webp|woff2|woff|ttf)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     }
   ]
