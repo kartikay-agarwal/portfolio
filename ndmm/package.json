@@ -1,0 +1,15 @@
+{
+  "name": "ndmm",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build",
+    "start": "cd frontend && npm start"
+  },
+  "dependencies": {
+    "@turf/turf": "^6.5.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
