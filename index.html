@@ -1,34 +1,400 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Work in Progress</title>
-    <style>
-      body {
-        margin: 0;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background-color: #0f172a;
-        color: #f1f5f9;
-        font-family: system-ui, sans-serif;
-        text-align: center;
-      }
-      h1 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-      }
-      p {
-        color: #94a3b8;
-        font-size: 1.1rem;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>🚧 Work in Progress 🚧</h1>
-    <p>We're working hard to bring this site to life. Check back soon!</p>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartikay Agarwal | Portfolio</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'bg-primary': '#020617',   // slate-950
+                        'bg-secondary': '#020617F2',
+                        'text-light': '#F9FAFB',
+                        'accent-main': '#6366F1',
+                        'accent-dark': '#4F46E5',
+                        'accent-soft': '#A5B4FC',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-bg-primary font-sans text-text-light overflow-x-hidden">
+    <!-- Gradient blobs background -->
+    <div class="bg-gradient-blob bg-gradient-1"></div>
+    <div class="bg-gradient-blob bg-gradient-2"></div>
+    <div class="bg-gradient-blob bg-gradient-3"></div>
+
+    <!-- Particle layer -->
+    <div id="particle-background"></div>
+
+    <!-- Header -->
+    <header id="header" class="header-bg sticky top-0 z-40">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-10 py-4 flex justify-between items-center">
+            <a href="#hero" class="flex items-center gap-2 group">
+                <div class="h-9 w-9 rounded-xl bg-gradient-to-br from-accent-main/80 to-accent-soft/80 flex items-center justify-center shadow-lg shadow-accent-main/40">
+                    <span class="font-bold text-lg tracking-tight">K</span>
+                </div>
+                <span class="font-semibold tracking-wide text-sm sm:text-base group-hover:text-accent-soft transition">
+                    Kartikay Agarwal
+                </span>
+            </a>
+
+            <!-- Desktop nav -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="nav-link text-sm font-medium tracking-wide">About</a>
+                <a href="#projects" class="nav-link text-sm font-medium tracking-wide">Projects</a>
+                <a href="#education" class="nav-link text-sm font-medium tracking-wide">Education</a>
+                <a href="#contact" class="nav-link text-sm font-medium tracking-wide">Contact</a>
+                <a href="#projects" class="ml-3 px-4 py-2 rounded-xl text-xs font-semibold bg-accent-main hover:bg-accent-dark shadow-lg shadow-accent-main/50 transition-transform hover:-translate-y-0.5">
+                    View Work
+                </a>
+            </div>
+
+            <!-- Mobile button -->
+            <button id="mobile-menu-button" class="md:hidden text-text-light focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-bg-secondary/95 border-t border-white/5 backdrop-blur-lg">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-1">
+                <a href="#about" class="nav-link block py-2 text-sm">About</a>
+                <a href="#projects" class="nav-link block py-2 text-sm">Projects</a>
+                <a href="#education" class="nav-link block py-2 text-sm">Education</a>
+                <a href="#contact" class="nav-link block py-2 text-sm">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-10">
+        <!-- HERO -->
+        <section id="hero" class="pt-20 sm:pt-24 lg:pt-28 pb-20 min-h-[80vh] flex flex-col lg:flex-row items-center justify-between gap-12" data-animate>
+            <!-- Left text -->
+            <div class="flex-1 space-y-6 max-w-xl">
+                <p class="inline-flex items-center gap-2 text-xs sm:text-sm font-medium tracking-wide text-accent-soft/90">
+                    <span class="h-1.5 w-1.5 rounded-full bg-accent-soft"></span>
+                    B.Tech CSE (AI & Data Engineering) @ VIT Vellore
+                </p>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight leading-tight">
+                    Web & Backend Developer<br class="hidden sm:block" />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-main via-accent-soft to-emerald-400">
+                        Data Enthusiast.
+                    </span>
+                </h1>
+
+                <p class="text-sm sm:text-base text-slate-300/90 leading-relaxed">
+                    I enjoy building performant web and backend systems, working with databases, 
+                    and analysing data to create meaningful reports and insights. Currently, 
+                    I'm strengthening my foundation in <span class="font-semibold">C++</span>, 
+                    <span class="font-semibold">DSA</span>, and <span class="font-semibold">Machine Learning</span> while exploring a bit of cybersecurity.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-4 pt-2">
+                    <a href="#projects" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-accent-main hover:bg-accent-dark shadow-lg shadow-accent-main/50 transition-transform hover:-translate-y-0.5">
+                        View Projects
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
+                    </a>
+                    <a href="#contact" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium border border-accent-main/60 hover:border-accent-soft/80 bg-white/0 hover:bg-white/5 transition">
+                        Contact Me
+                        <i class="fa-regular fa-paper-plane text-[11px]"></i>
+                    </a>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-3 pt-4 text-[11px] sm:text-xs text-slate-300/80">
+                    <span class="px-3 py-1 rounded-full border border-white/5 bg-white/5 backdrop-blur-md">
+                        Python • JS • Java
+                    </span>
+                    <span class="px-3 py-1 rounded-full border border-white/5 bg-white/5 backdrop-blur-md">
+                        Web & Backend Dev
+                    </span>
+                    <span class="px-3 py-1 rounded-full border border-white/5 bg-white/5 backdrop-blur-md">
+                        DBMS & SQL
+                    </span>
+                    <span class="px-3 py-1 rounded-full border border-white/5 bg-white/5 backdrop-blur-md">
+                        Learning C++ • DSA • ML
+                    </span>
+                </div>
+            </div>
+
+            <!-- Right: circular photo frame (uploadable) -->
+            <div class="flex-1 flex justify-center lg:justify-end" data-animate data-animate-delay="2">
+                <div class="relative">
+                    <div class="absolute -inset-1 rounded-full bg-gradient-to-tr from-accent-main via-accent-soft to-emerald-400 blur-2 opacity-80 animate-pulse-slow"></div>
+                    <div class="relative h-64 w-64 sm:h-72 sm:w-72 rounded-full bg-bg-secondary/80 backdrop-blur-lg border border-white/10 shadow-2xl flex items-center justify-center overflow-hidden">
+                        <!-- Replace this placeholder with your actual image -->
+                        <!-- Example: <img src="me.jpg" alt="Kartikay Agarwal" class="h-full w-full object-cover"> -->
+                        <div class="text-center px-6">
+                            <i class="fa-solid fa-user text-5xl mb-3 text-slate-400/80"></i>
+                            <p class="text-xs uppercase tracking-[0.2em] text-slate-400/80">Your Photo Here</p>
+                            <p class="mt-1 text-[11px] text-slate-400/80">Replace with an image tag in <code>index.html</code></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="py-16 sm:py-20" data-animate>
+            <div class="max-w-4xl mx-auto">
+                <div class="section-label">ABOUT</div>
+                <div class="flex flex-col lg:flex-row gap-10 mt-6">
+                    <!-- Text -->
+                    <div class="flex-[1.7] glass-card p-7 sm:p-8" data-animate data-animate-delay="1">
+                        <h2 class="section-title">Academic Focus</h2>
+                        <p class="mt-4 text-sm sm:text-base text-slate-200/90 leading-relaxed">
+                            I'm pursuing <span class="font-semibold">B.Tech in Computer Science Engineering</span> with
+                            a specialization in <span class="font-semibold">Artificial Intelligence and Data Engineering</span> at 
+                            <span class="font-semibold">VIT Vellore</span>.
+                        </p>
+                        <p class="mt-3 text-sm sm:text-base text-slate-200/90 leading-relaxed">
+                            I enjoy working on <span class="font-semibold">backend development</span>, 
+                            <span class="font-semibold">database systems</span>, and <span class="font-semibold">data analysis</span>. 
+                            I like understanding how data flows through a system, how it’s stored, and how to use it to 
+                            answer concrete questions or build useful features and reports.
+                        </p>
+                        <p class="mt-3 text-sm sm:text-base text-slate-200/90 leading-relaxed">
+                            Alongside this, I'm actively strengthening my foundation in 
+                            <span class="font-semibold">C++</span>, <span class="font-semibold">Data Structures & Algorithms</span>, and
+                            <span class="font-semibold">Machine Learning</span>, while also exploring 
+                            <span class="font-semibold">cybersecurity</span> concepts at a beginner level.
+                        </p>
+                    </div>
+
+                    <!-- Skills -->
+                    <div class="flex-[1.3] space-y-5">
+                        <div class="glass-card p-6 sm:p-7" data-animate data-animate-delay="2">
+                            <h3 class="text-sm font-semibold tracking-[0.18em] text-slate-300/80 uppercase mb-3">
+                                Core Skills
+                            </h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">Java</span>
+                                <span class="skill-tag">Web Development</span>
+                                <span class="skill-tag">Backend Development</span>
+                                <span class="skill-tag">DBMS</span>
+                                <span class="skill-tag">SQL</span>
+                                <span class="skill-tag">Git / GitHub</span>
+                                <span class="skill-tag">API Development</span>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-6 sm:p-7" data-animate data-animate-delay="3">
+                            <h3 class="text-sm font-semibold tracking-[0.18em] text-slate-300/80 uppercase mb-3">
+                                Currently Exploring
+                            </h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-tag">C++</span>
+                                <span class="skill-tag">Data Structures & Algorithms</span>
+                                <span class="skill-tag">Machine Learning</span>
+                                <span class="skill-tag">Cybersecurity Basics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="py-16 sm:py-20" data-animate>
+            <div class="flex items-center justify-between gap-4 max-w-5xl mx-auto mb-8">
+                <div>
+                    <div class="section-label">PROJECTS</div>
+                    <h2 class="section-title mt-2">Academic & Personal Work</h2>
+                </div>
+                <p class="hidden md:block text-xs text-slate-400 max-w-xs text-right">
+                    A mix of coursework, experiments in digital design, and problem-driven coding projects.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7 max-w-5xl mx-auto">
+                <!-- Project 1 -->
+                <article class="project-card glass-card" data-animate data-animate-delay="1">
+                    <div class="project-badge">C++ / CLI</div>
+                    <h3 class="project-title">Women's Safety Emergency Alert</h3>
+                    <p class="project-desc">
+                        A C++ project concept that triggers an emergency alert containing key details 
+                        to trusted contacts, aimed at improving response time and safety in critical situations.
+                    </p>
+                    <div class="project-tags">
+                        <span>C++</span>
+                        <span>Problem Solving</span>
+                        <span>Console App</span>
+                    </div>
+                    <button class="project-link">
+                        Source (WIP)
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </button>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card glass-card" data-animate data-animate-delay="2">
+                    <div class="project-badge">Hardware / IoT</div>
+                    <h3 class="project-title">Auto Night Lamp</h3>
+                    <p class="project-desc">
+                        An automatic night lamp using an LDR and transistor/MOSFET with a high-power LED,
+                        later extended conceptually using microcontrollers and sensors to log timing and ambient behaviour.
+                    </p>
+                    <div class="project-tags">
+                        <span>Electronics</span>
+                        <span>LDR</span>
+                        <span>NodeMCU (Concept)</span>
+                    </div>
+                    <button class="project-link">
+                        Circuit Notes
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </button>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-card glass-card" data-animate data-animate-delay="3">
+                    <div class="project-badge">Verilog / DSD</div>
+                    <h3 class="project-title">Digital System Design Experiments</h3>
+                    <p class="project-desc">
+                        Implemented counters, shift registers, and a 4-digit 7-segment display using Verilog 
+                        and ICs like the 74HC74, bridging theory from DSD coursework with practical breadboard circuits.
+                    </p>
+                    <div class="project-tags">
+                        <span>Verilog</span>
+                        <span>74HC74</span>
+                        <span>Digital Logic</span>
+                    </div>
+                    <button class="project-link">
+                        Design Docs
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </button>
+                </article>
+
+                <!-- Project 4 -->
+                <article class="project-card glass-card md:col-span-2 xl:col-span-1" data-animate data-animate-delay="4">
+                    <div class="project-badge">Guide / Content</div>
+                    <h3 class="project-title">VIT Beginner's Guide</h3>
+                    <p class="project-desc">
+                        A structured guide for new students at VIT Vellore, covering campus navigation, academics, 
+                        basic survival tips, and helpful context so freshers can settle in faster and focus on learning.
+                    </p>
+                    <div class="project-tags">
+                        <span>Writing</span>
+                        <span>Student Experience</span>
+                        <span>Onboarding</span>
+                    </div>
+                    <button class="project-link">
+                        Outline (Internal)
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </button>
+                </article>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section id="education" class="py-16 sm:py-20" data-animate>
+            <div class="max-w-4xl mx-auto">
+                <div class="section-label">EDUCATION</div>
+                <h2 class="section-title mt-2 mb-8">Education & Involvement</h2>
+
+                <div class="relative timeline">
+                    <!-- line -->
+                    <div class="timeline-line"></div>
+
+                    <!-- item 1 -->
+                    <div class="timeline-item timeline-right" data-animate data-animate-delay="1">
+                        <div class="timeline-dot"></div>
+                        <div class="glass-card p-6 sm:p-7">
+                            <h3 class="text-base sm:text-lg font-semibold text-accent-soft">
+                                B.Tech CSE (AI & Data Engineering)
+                            </h3>
+                            <p class="text-sm sm:text-base text-slate-200/90 mt-1">
+                                Vellore Institute of Technology — VIT Vellore
+                            </p>
+                            <p class="text-[11px] sm:text-xs text-slate-400 mt-1">
+                                Current Student
+                            </p>
+                            <ul class="mt-3 text-xs sm:text-sm text-slate-200/90 space-y-1.5 list-disc pl-4">
+                                <li>Specialisation in Artificial Intelligence and Data Engineering.</li>
+                                <li>Comfortable with DBMS, web/backend development, and data analysis/reporting.</li>
+                                <li>Continuously working on C++, DSA, and ML fundamentals.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="py-16 sm:py-20" data-animate>
+            <div class="max-w-3xl mx-auto">
+                <div class="section-label text-center">CONTACT</div>
+                <h2 class="section-title text-center mt-2 mb-4">Let's Connect</h2>
+                <p class="text-center text-sm sm:text-base text-slate-300/90 max-w-xl mx-auto mb-8">
+                    Open to opportunities in <span class="font-semibold">backend development</span>, 
+                    <span class="font-semibold">data engineering</span>, and general 
+                    <span class="font-semibold">software development</span>. Feel free to reach out for collaborations or discussions.
+                </p>
+
+                <div class="glass-card p-6 sm:p-8">
+                    <form class="space-y-4">
+                        <div>
+                            <label for="name" class="form-label">Name</label>
+                            <input id="name" type="text" class="form-input" placeholder="Your Name">
+                        </div>
+                        <div>
+                            <label for="email" class="form-label">Email</label>
+                            <input id="email" type="email" class="form-input" placeholder="you@example.com">
+                        </div>
+                        <div>
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" rows="4" class="form-input resize-none" placeholder="I'd like to talk about your projects..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full sm:w-auto px-6 py-2.5 rounded-xl text-sm font-semibold bg-accent-main hover:bg-accent-dark shadow-lg shadow-accent-main/50 transition-transform hover:-translate-y-0.5">
+                            Send Message
+                        </button>
+                    </form>
+
+                    <div class="flex justify-center gap-5 mt-8 text-2xl">
+                        <!-- Replace these with your actual links when ready -->
+                        <a href="https://linkedin.com/in/your-profile" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/your-username" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:youremail@example.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/5 py-6 mt-6 text-center text-[11px] sm:text-xs text-slate-400/90">
+        <p>&copy; 2025 Kartikay Agarwal. Built with Tailwind CSS & a lot of curiosity.</p>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="script.js" defer></script>
+</body>
 </html>
