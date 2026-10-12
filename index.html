@@ -1,400 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kartikay Agarwal | Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kartikay Agarwal — Infrastructure, Backend & AI Systems</title>
+  <meta name="description" content="Kartikay Agarwal — B.Tech CSE (AI & Data Engineering) at VIT Vellore. Builds self-hosted infrastructure, backend systems and LLM pipelines.">
+  <meta property="og:title" content="Kartikay Agarwal — Portfolio">
+  <meta property="og:description" content="Self-hosted infrastructure, backend systems and LLM pipelines.">
+  <meta name="theme-color" content="#faf8f4">
 
-    <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Tailwind Config -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        'bg-primary': '#020617',   // slate-950
-                        'bg-secondary': '#020617F2',
-                        'text-light': '#F9FAFB',
-                        'accent-main': '#6366F1',
-                        'accent-dark': '#4F46E5',
-                        'accent-soft': '#A5B4FC',
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- Inter Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-bg-primary font-sans text-text-light overflow-x-hidden">
-    <!-- Gradient blobs background -->
-    <div class="bg-gradient-blob bg-gradient-1"></div>
-    <div class="bg-gradient-blob bg-gradient-2"></div>
-    <div class="bg-gradient-blob bg-gradient-3"></div>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
 
-    <!-- Particle layer -->
-    <div id="particle-background"></div>
+  <header class="site-header" id="top">
+    <div class="wrap bar">
+      <a class="brand" href="#top">Kartikay Agarwal</a>
+      <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav id="nav" aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#more">Also built</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Header -->
-    <header id="header" class="header-bg sticky top-0 z-40">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-10 py-4 flex justify-between items-center">
-            <a href="#hero" class="flex items-center gap-2 group">
-                <div class="h-9 w-9 rounded-xl bg-gradient-to-br from-accent-main/80 to-accent-soft/80 flex items-center justify-center shadow-lg shadow-accent-main/40">
-                    <span class="font-bold text-lg tracking-tight">K</span>
-                </div>
-                <span class="font-semibold tracking-wide text-sm sm:text-base group-hover:text-accent-soft transition">
-                    Kartikay Agarwal
-                </span>
-            </a>
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero wrap">
+      <p class="eyebrow">B.Tech CSE · AI &amp; Data Engineering · VIT Vellore · Class of 2028</p>
+      <h1>I build the infrastructure, backends and AI pipelines that products run on.</h1>
+      <p class="lede">
+        I run my own production-style stack end to end &mdash; identity, orchestration, mesh networking, monitoring &mdash;
+        and use it to ship client-facing systems: LLM fine-tuning and serving, analytics platforms and data tooling.
+        Currently a Software Engineering Intern at LMX Labs.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="#work">See selected work</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+      <dl class="facts">
+        <div><dt>Focus</dt><dd>Self-hosted infra, backend, LLM systems</dd></div>
+        <div><dt>Now</dt><dd>Intern @ LMX Labs (since Jul 2026)</dd></div>
+        <div><dt>Leads</dt><dd>Operations @ HexoForge; Software Innovations @ IIC</dd></div>
+        <div><dt>Base</dt><dd>Vellore, India · from Agra</dd></div>
+      </dl>
+    </section>
 
-            <!-- Desktop nav -->
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#about" class="nav-link text-sm font-medium tracking-wide">About</a>
-                <a href="#projects" class="nav-link text-sm font-medium tracking-wide">Projects</a>
-                <a href="#education" class="nav-link text-sm font-medium tracking-wide">Education</a>
-                <a href="#contact" class="nav-link text-sm font-medium tracking-wide">Contact</a>
-                <a href="#projects" class="ml-3 px-4 py-2 rounded-xl text-xs font-semibold bg-accent-main hover:bg-accent-dark shadow-lg shadow-accent-main/50 transition-transform hover:-translate-y-0.5">
-                    View Work
-                </a>
-            </div>
+    <!-- SELECTED WORK -->
+    <section id="work" class="wrap section">
+      <header class="section-head">
+        <p class="eyebrow">01 — Selected work</p>
+        <h2>Systems I've designed, run and debugged</h2>
+      </header>
 
-            <!-- Mobile button -->
-            <button id="mobile-menu-button" class="md:hidden text-text-light focus:outline-none">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
-        </nav>
-
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-bg-secondary/95 border-t border-white/5 backdrop-blur-lg">
-            <div class="container mx-auto px-4 py-3 flex flex-col space-y-1">
-                <a href="#about" class="nav-link block py-2 text-sm">About</a>
-                <a href="#projects" class="nav-link block py-2 text-sm">Projects</a>
-                <a href="#education" class="nav-link block py-2 text-sm">Education</a>
-                <a href="#contact" class="nav-link block py-2 text-sm">Contact</a>
-            </div>
+      <article class="case">
+        <div class="case-meta">
+          <span class="num">01</span>
+          <span class="tag">Infrastructure</span>
         </div>
-    </header>
+        <div class="case-body">
+          <h3>HexoForge — a self-hosted platform stack</h3>
+          <p>
+            A bare-metal deployment platform I operate myself: Dokploy on Docker Swarm with Traefik, ingress through
+            Cloudflare Tunnel, and a self-hosted NetBird mesh VPN. Authentik provides single sign-on (OIDC/SAML) across
+            Vaultwarden, Forgejo, LiteLLM, Beszel and NetBird, with automated backups to MinIO and a
+            Grafana + Loki + Promtail logging stack.
+          </p>
+          <p>
+            The interesting part is the failures: recovering from Docker network corruption with a full Swarm
+            re-initialisation, fixing tunnel packet loss by forcing HTTP/2 transport, untangling NetBird DNS and ICE
+            issues, and restoring email deliverability under DMARC enforcement.
+          </p>
+          <ul class="chips"><li>Docker Swarm</li><li>Traefik</li><li>Authentik</li><li>NetBird</li><li>Cloudflare Tunnel</li><li>MinIO</li><li>Grafana / Loki</li></ul>
+        </div>
+      </article>
 
-    <main class="container mx-auto px-4 sm:px-6 lg:px-10">
-        <!-- HERO -->
-        <section id="hero" class="pt-20 sm:pt-24 lg:pt-28 pb-20 min-h-[80vh] flex flex-col lg:flex-row items-center justify-between gap-12" data-animate>
-            <!-- Left text -->
-            <div class="flex-1 space-y-6 max-w-xl">
-                <p class="inline-flex items-center gap-2 text-xs sm:text-sm font-medium tracking-wide text-accent-soft/90">
-                    <span class="h-1.5 w-1.5 rounded-full bg-accent-soft"></span>
-                    B.Tech CSE (AI & Data Engineering) @ VIT Vellore
-                </p>
+      <article class="case">
+        <div class="case-meta">
+          <span class="num">02</span>
+          <span class="tag">LLM / ML</span>
+        </div>
+        <div class="case-body">
+          <h3>LLM fine-tuning &amp; serving pipeline</h3>
+          <p>
+            Fine-tuned a Gemma 4 12B model on ~530 call transcripts across an 8×H200 cluster using Unsloth and TRL,
+            taking training loss from 2.56 to 0.22. Fine-tuned LoRA adapters are served through vLLM on a GH200
+            (96 GB) inference box with 3.5 TB of NVMe for model storage. I also evaluated H100 SXM vs GH200 for a 32B
+            support-chatbot workload and tracked ARM/aarch64 tooling gaps (LLaMA-Factory as the Unsloth alternative).
+          </p>
+          <ul class="chips"><li>PyTorch</li><li>Unsloth / TRL</li><li>torchrun</li><li>vLLM</li><li>LoRA</li><li>JSONL datasets</li></ul>
+        </div>
+      </article>
 
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight leading-tight">
-                    Web & Backend Developer<br class="hidden sm:block" />
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-main via-accent-soft to-emerald-400">
-                        Data Enthusiast.
-                    </span>
-                </h1>
+      <article class="case">
+        <div class="case-meta">
+          <span class="num">03</span>
+          <span class="tag">LLM evaluation</span>
+        </div>
+        <div class="case-body">
+          <h3>Mortgage-screening assistant &amp; LLM observability</h3>
+          <p>
+            Prompt-engineered and evaluated a screening assistant for a US mortgage lender, iterating the system prompt
+            against automated evaluation runs (an LLM judge plus an auto-grader) to fix rate-refusal, opt-out handling and
+            suggestion-collapse failures. Traces flow into self-hosted Langfuse and PostHog, with Grafana dashboards over
+            ClickHouse for debugging production behaviour.
+          </p>
+          <ul class="chips"><li>Prompt engineering</li><li>LLM-as-judge</li><li>Langfuse</li><li>PostHog</li><li>ClickHouse</li><li>Grafana</li></ul>
+        </div>
+      </article>
 
-                <p class="text-sm sm:text-base text-slate-300/90 leading-relaxed">
-                    I enjoy building performant web and backend systems, working with databases, 
-                    and analysing data to create meaningful reports and insights. Currently, 
-                    I'm strengthening my foundation in <span class="font-semibold">C++</span>, 
-                    <span class="font-semibold">DSA</span>, and <span class="font-semibold">Machine Learning</span> while exploring a bit of cybersecurity.
-                </p>
+      <article class="case">
+        <div class="case-meta">
+          <span class="num">04</span>
+          <span class="tag">Data platform</span>
+        </div>
+        <div class="case-body">
+          <h3>Hexo — marketing analytics on Appwrite</h3>
+          <p>
+            A Meta-ads analytics platform on self-hosted Appwrite: a redesigned schema
+            (<code>meta_insights</code>, <code>ad_creative</code>, <code>ad_summary</code>), ingestion through the Meta
+            Marketing API including video assets, and automated Excel report generation. When Appwrite 1.8.0's SDK
+            mishandled <code>equal</code> filters, I worked around it with fetch-all plus in-memory filtering.
+          </p>
+          <ul class="chips"><li>Appwrite</li><li>Meta Marketing API</li><li>Python</li><li>Excel reporting</li></ul>
+        </div>
+      </article>
 
-                <div class="flex flex-wrap items-center gap-4 pt-2">
-                    <a href="#projects" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-accent-main hover:bg-accent-dark shadow-lg shadow-accent-main/50 transition-transform hover:-translate-y-0.5">
-                        View Projects
-                        <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
-                    </a>
-                    <a href="#contact" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium border border-accent-main/60 hover:border-accent-soft/80 bg-white/0 hover:bg-white/5 transition">
-                        Contact Me
-                        <i class="fa-regular fa-paper-plane text-[11px]"></i>
-                    </a>
-                </div>
+      <article class="case">
+        <div class="case-meta">
+          <span class="num">05</span>
+          <span class="tag">Systems admin</span>
+        </div>
+        <div class="case-body">
+          <h3>Multi-user Windows Server 2025 environment</h3>
+          <p>
+            A shared Windows Server 2025 RDP host for a group of users, extended past the default two-session limit,
+            with LDAP authentication through Authentik (pGina), monitoring scripts, and a migration that included
+            repairing broken NTFS ACLs to recover user profiles.
+          </p>
+          <ul class="chips"><li>Windows Server</li><li>RDP</li><li>LDAP</li><li>PowerShell</li></ul>
+        </div>
+      </article>
 
-                <div class="flex flex-wrap items-center gap-3 pt-4 text-[11px] sm:text-xs text-slate-300/80">
-                    <span class="px-3 py-1 rounded-full border border-white/5 bg-white/5 backdrop-blur-md">
-                        Python • JS • Java
-                    </span>
-                    <span class="px-3 py-1 rounded-full border border-white/5 bg-white/5 backdrop-blur-md">
-                        Web & Backend Dev
-                    </span>
-                    <span class="px-3 py-1 rounded-full border border-white/5 bg-white/5 backdrop-blur-md">
-                        DBMS & SQL
-                    </span>
-                    <span class="px-3 py-1 rounded-full border border-white/5 bg-white/5 backdrop-blur-md">
-                        Learning C++ • DSA • ML
-                    </span>
-                </div>
-            </div>
+      <article class="case">
+        <div class="case-meta">
+          <span class="num">06</span>
+          <span class="tag">Game dev</span>
+        </div>
+        <div class="case-body">
+          <h3>Data-center tycoon (Godot)</h3>
+          <p>
+            A 3D data-center management game: rack and server placement on a grid, cabling with switches and patch
+            panels, airflow and cooling, power and UPS, contracts, employees and an economy layer. Being rebuilt from scratch in Godot with entirely new code, with Steam as
+            the target.
+          </p>
+          <ul class="chips"><li>Godot</li><li>Simulation</li><li>Economy design</li></ul>
+        </div>
+      </article>
 
-            <!-- Right: circular photo frame (uploadable) -->
-            <div class="flex-1 flex justify-center lg:justify-end" data-animate data-animate-delay="2">
-                <div class="relative">
-                    <div class="absolute -inset-1 rounded-full bg-gradient-to-tr from-accent-main via-accent-soft to-emerald-400 blur-2 opacity-80 animate-pulse-slow"></div>
-                    <div class="relative h-64 w-64 sm:h-72 sm:w-72 rounded-full bg-bg-secondary/80 backdrop-blur-lg border border-white/10 shadow-2xl flex items-center justify-center overflow-hidden">
-                        <!-- Replace this placeholder with your actual image -->
-                        <!-- Example: <img src="me.jpg" alt="Kartikay Agarwal" class="h-full w-full object-cover"> -->
-                        <div class="text-center px-6">
-                            <i class="fa-solid fa-user text-5xl mb-3 text-slate-400/80"></i>
-                            <p class="text-xs uppercase tracking-[0.2em] text-slate-400/80">Your Photo Here</p>
-                            <p class="mt-1 text-[11px] text-slate-400/80">Replace with an image tag in <code>index.html</code></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <article class="case">
+        <div class="case-meta">
+          <span class="num">07</span>
+          <span class="tag">Hardware</span>
+        </div>
+        <div class="case-body">
+          <h3>Cyberpunk desk clock</h3>
+          <p>
+            A desk clock built around an NXP FRDM-MCXN947 (dual Cortex-M33) and a DS3231 RTC, in an FDM-printed
+            retro-futuristic enclosure. After weighing Nixie, VFD and 7-segment options, I moved from Nixie tubes
+            (hard to source in India) to VFD tubes.
+          </p>
+          <ul class="chips"><li>Embedded C</li><li>NXP MCX</li><li>DS3231</li><li>VFD</li><li>3D printing</li></ul>
+        </div>
+      </article>
+    </section>
 
-        <!-- ABOUT -->
-        <section id="about" class="py-16 sm:py-20" data-animate>
-            <div class="max-w-4xl mx-auto">
-                <div class="section-label">ABOUT</div>
-                <div class="flex flex-col lg:flex-row gap-10 mt-6">
-                    <!-- Text -->
-                    <div class="flex-[1.7] glass-card p-7 sm:p-8" data-animate data-animate-delay="1">
-                        <h2 class="section-title">Academic Focus</h2>
-                        <p class="mt-4 text-sm sm:text-base text-slate-200/90 leading-relaxed">
-                            I'm pursuing <span class="font-semibold">B.Tech in Computer Science Engineering</span> with
-                            a specialization in <span class="font-semibold">Artificial Intelligence and Data Engineering</span> at 
-                            <span class="font-semibold">VIT Vellore</span>.
-                        </p>
-                        <p class="mt-3 text-sm sm:text-base text-slate-200/90 leading-relaxed">
-                            I enjoy working on <span class="font-semibold">backend development</span>, 
-                            <span class="font-semibold">database systems</span>, and <span class="font-semibold">data analysis</span>. 
-                            I like understanding how data flows through a system, how it’s stored, and how to use it to 
-                            answer concrete questions or build useful features and reports.
-                        </p>
-                        <p class="mt-3 text-sm sm:text-base text-slate-200/90 leading-relaxed">
-                            Alongside this, I'm actively strengthening my foundation in 
-                            <span class="font-semibold">C++</span>, <span class="font-semibold">Data Structures & Algorithms</span>, and
-                            <span class="font-semibold">Machine Learning</span>, while also exploring 
-                            <span class="font-semibold">cybersecurity</span> concepts at a beginner level.
-                        </p>
-                    </div>
+    <!-- EXPERIENCE -->
+    <section id="experience" class="wrap section">
+      <header class="section-head">
+        <p class="eyebrow">02 — Experience &amp; leadership</p>
+        <h2>Where I've been building</h2>
+      </header>
+      <ol class="timeline">
+        <li>
+          <span class="when">Current role</span>
+          <div>
+            <h3>Head of Operations · HexoForge</h3>
+            <p>
+              Run operations for HexoForge, the self-hosted infrastructure and software venture: the platform stack
+              behind its client deployments, identity and access, monitoring, backups and incident response.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="when">Jul 2026 — Present</span>
+          <div>
+            <h3>Software Engineering Intern · LMX Labs</h3>
+            <p>Working on production software as part of the engineering team.</p>
+          </div>
+        </li>
+        <li>
+          <span class="when">Current role</span>
+          <div>
+            <h3>Co-ordinator, Software Innovations · IIC @ VIT</h3>
+            <p>
+              Built the club's recruitment system (application form + admin review dashboard) and a Technology
+              Readiness Level assessment portal. Planning the 2026 Innovation Workshop Series: 13 hands-on workshops
+              for 50 members in rotating teams of five, from robotics &amp; sensors to machine learning and open-source
+              contribution.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="when">Ongoing</span>
+          <div>
+            <h3>Visual Bloggers' Club &amp; E-Cell · VIT</h3>
+            <p>
+              Designed club merch and logo, and organised quiz events including Tech Tussle, the Human Rights Day Quiz
+              and the Anti-Corruption Day Quiz.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="when">Dec 2023</span>
+          <div>
+            <h3>Where it started: Hypernic</h3>
+            <p>A Python backup/transfer script with a server-monitoring stack &mdash; the first project that led to everything above.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
 
-                    <!-- Skills -->
-                    <div class="flex-[1.3] space-y-5">
-                        <div class="glass-card p-6 sm:p-7" data-animate data-animate-delay="2">
-                            <h3 class="text-sm font-semibold tracking-[0.18em] text-slate-300/80 uppercase mb-3">
-                                Core Skills
-                            </h3>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="skill-tag">Python</span>
-                                <span class="skill-tag">JavaScript</span>
-                                <span class="skill-tag">Java</span>
-                                <span class="skill-tag">Web Development</span>
-                                <span class="skill-tag">Backend Development</span>
-                                <span class="skill-tag">DBMS</span>
-                                <span class="skill-tag">SQL</span>
-                                <span class="skill-tag">Git / GitHub</span>
-                                <span class="skill-tag">API Development</span>
-                            </div>
-                        </div>
+    <!-- MORE PROJECTS -->
+    <section id="more" class="wrap section">
+      <header class="section-head">
+        <p class="eyebrow">03 — Also built</p>
+        <h2>Smaller projects, coursework and experiments</h2>
+      </header>
+      <div class="grid">
+        <article class="card"><h3>MediTrack</h3><p>Hospital database system for the Database Systems course (BCSE302L); team of two, frontend in progress.</p><span class="mono">SQL · DBMS</span></article>
+        <article class="card"><h3>FFCS Scheduler</h3><p>VIT course-registration clash-detection system with a C++ backend and MySQL.</p><span class="mono">C++ · MySQL</span></article>
+        <article class="card"><h3>PolicySaathi</h3><p>AI-powered site that helps Indian users find government schemes and subsidies they're eligible for.</p><span class="mono">AI · Web</span></article>
+        <article class="card"><h3>Disaster Alert App</h3><p>Low-bandwidth web app with live location, shelter data and routing for emergencies.</p><span class="mono">Web · Geolocation</span></article>
+        <article class="card"><h3>HLS Streaming &amp; Tracking</h3><p>HLS video player with usage tracking on Node/Express + MongoDB, backed by object storage for large libraries.</p><span class="mono">Node · MongoDB · HLS</span></article>
+        <article class="card"><h3>Distributed Scraper</h3><p>FastAPI + WebSocket scraping system with PostgreSQL and Redis coordinating workers.</p><span class="mono">FastAPI · Redis · Postgres</span></article>
+        <article class="card"><h3>Aiden — Discord bot</h3><p>Discord.js bot with Gemini integration and MongoDB conversation logging.</p><span class="mono">Discord.js · Gemini</span></article>
+        <article class="card"><h3>Multilingual Marketplace</h3><p>E-commerce preview with a multi-language UI and a Gemini-powered chatbot buyer experience.</p><span class="mono">Gemini · Frontend</span></article>
+        <article class="card"><h3>TOC Automata Simulator</h3><p>Theory of Computation web app combining automata simulation with a CYK parser.</p><span class="mono">Web · Automata</span></article>
+        <article class="card"><h3>Smart Elevator &amp; Macro Pad</h3><p>Digital System Design coursework on FRDM-MCXN947 and Raspberry Pi Pico, plus a smart waste-bin design.</p><span class="mono">Embedded · Verilog</span></article>
+        <article class="card"><h3>OCI Free-Tier Provisioner</h3><p>Raw REST API script for provisioning free-tier ARM instances on Oracle Cloud.</p><span class="mono">Python · REST</span></article>
+      </div>
+    </section>
 
-                        <div class="glass-card p-6 sm:p-7" data-animate data-animate-delay="3">
-                            <h3 class="text-sm font-semibold tracking-[0.18em] text-slate-300/80 uppercase mb-3">
-                                Currently Exploring
-                            </h3>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="skill-tag">C++</span>
-                                <span class="skill-tag">Data Structures & Algorithms</span>
-                                <span class="skill-tag">Machine Learning</span>
-                                <span class="skill-tag">Cybersecurity Basics</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- SKILLS -->
+    <section id="skills" class="wrap section">
+      <header class="section-head">
+        <p class="eyebrow">04 — Skills</p>
+        <h2>What I work with</h2>
+      </header>
+      <div class="skills">
+        <div><h3>Languages</h3><p>Python, JavaScript / TypeScript, Java, C, C++, C#, SQL, Bash, PowerShell</p></div>
+        <div><h3>Backend &amp; data</h3><p>Node.js, FastAPI, Express, PostgreSQL, MongoDB, MySQL, Redis, ClickHouse, Appwrite</p></div>
+        <div><h3>Infrastructure</h3><p>Linux administration, Docker / Compose / Swarm, Dokploy, Traefik, Cloudflare (Tunnel, R2), Tailscale, NetBird, Authentik</p></div>
+        <div><h3>AI / ML</h3><p>LLM fine-tuning (Unsloth, TRL), vLLM, LoRA, prompt evaluation, Langfuse, PostHog, Grafana</p></div>
+        <div><h3>Embedded &amp; other</h3><p>Verilog, Cortex-M33 (NXP MCX), Raspberry Pi Pico, Godot, 3D printing</p></div>
+        <div><h3>Education</h3><p>B.Tech CSE, specialisation in AI &amp; Data Engineering — VIT Vellore (2024–2028). Google AI Essentials (Coursera).</p></div>
+      </div>
+    </section>
 
-        <!-- PROJECTS -->
-        <section id="projects" class="py-16 sm:py-20" data-animate>
-            <div class="flex items-center justify-between gap-4 max-w-5xl mx-auto mb-8">
-                <div>
-                    <div class="section-label">PROJECTS</div>
-                    <h2 class="section-title mt-2">Academic & Personal Work</h2>
-                </div>
-                <p class="hidden md:block text-xs text-slate-400 max-w-xs text-right">
-                    A mix of coursework, experiments in digital design, and problem-driven coding projects.
-                </p>
-            </div>
+    <!-- CONTACT -->
+    <section id="contact" class="wrap section contact">
+      <header class="section-head">
+        <p class="eyebrow">05 — Contact</p>
+        <h2>Let's build something.</h2>
+        <p class="lede">Open to internships and collaborations in backend, infrastructure and applied AI.</p>
+      </header>
+      <ul class="links">
+        <!-- TODO: replace the three hrefs below with your real links -->
+        <li><a href="mailto:YOUR_EMAIL@example.com">Email <span>→</span></a></li>
+        <li><a href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener">GitHub <span>↗</span></a></li>
+        <li><a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn <span>↗</span></a></li>
+      </ul>
+    </section>
+  </main>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7 max-w-5xl mx-auto">
-                <!-- Project 1 -->
-                <article class="project-card glass-card" data-animate data-animate-delay="1">
-                    <div class="project-badge">C++ / CLI</div>
-                    <h3 class="project-title">Women's Safety Emergency Alert</h3>
-                    <p class="project-desc">
-                        A C++ project concept that triggers an emergency alert containing key details 
-                        to trusted contacts, aimed at improving response time and safety in critical situations.
-                    </p>
-                    <div class="project-tags">
-                        <span>C++</span>
-                        <span>Problem Solving</span>
-                        <span>Console App</span>
-                    </div>
-                    <button class="project-link">
-                        Source (WIP)
-                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                    </button>
-                </article>
+  <footer class="wrap foot">
+    <p>© <span id="year">2026</span> Kartikay Agarwal</p>
+    <p><a href="#top">Back to top ↑</a></p>
+  </footer>
 
-                <!-- Project 2 -->
-                <article class="project-card glass-card" data-animate data-animate-delay="2">
-                    <div class="project-badge">Hardware / IoT</div>
-                    <h3 class="project-title">Auto Night Lamp</h3>
-                    <p class="project-desc">
-                        An automatic night lamp using an LDR and transistor/MOSFET with a high-power LED,
-                        later extended conceptually using microcontrollers and sensors to log timing and ambient behaviour.
-                    </p>
-                    <div class="project-tags">
-                        <span>Electronics</span>
-                        <span>LDR</span>
-                        <span>NodeMCU (Concept)</span>
-                    </div>
-                    <button class="project-link">
-                        Circuit Notes
-                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                    </button>
-                </article>
-
-                <!-- Project 3 -->
-                <article class="project-card glass-card" data-animate data-animate-delay="3">
-                    <div class="project-badge">Verilog / DSD</div>
-                    <h3 class="project-title">Digital System Design Experiments</h3>
-                    <p class="project-desc">
-                        Implemented counters, shift registers, and a 4-digit 7-segment display using Verilog 
-                        and ICs like the 74HC74, bridging theory from DSD coursework with practical breadboard circuits.
-                    </p>
-                    <div class="project-tags">
-                        <span>Verilog</span>
-                        <span>74HC74</span>
-                        <span>Digital Logic</span>
-                    </div>
-                    <button class="project-link">
-                        Design Docs
-                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                    </button>
-                </article>
-
-                <!-- Project 4 -->
-                <article class="project-card glass-card md:col-span-2 xl:col-span-1" data-animate data-animate-delay="4">
-                    <div class="project-badge">Guide / Content</div>
-                    <h3 class="project-title">VIT Beginner's Guide</h3>
-                    <p class="project-desc">
-                        A structured guide for new students at VIT Vellore, covering campus navigation, academics, 
-                        basic survival tips, and helpful context so freshers can settle in faster and focus on learning.
-                    </p>
-                    <div class="project-tags">
-                        <span>Writing</span>
-                        <span>Student Experience</span>
-                        <span>Onboarding</span>
-                    </div>
-                    <button class="project-link">
-                        Outline (Internal)
-                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                    </button>
-                </article>
-            </div>
-        </section>
-
-        <!-- EDUCATION -->
-        <section id="education" class="py-16 sm:py-20" data-animate>
-            <div class="max-w-4xl mx-auto">
-                <div class="section-label">EDUCATION</div>
-                <h2 class="section-title mt-2 mb-8">Education & Involvement</h2>
-
-                <div class="relative timeline">
-                    <!-- line -->
-                    <div class="timeline-line"></div>
-
-                    <!-- item 1 -->
-                    <div class="timeline-item timeline-right" data-animate data-animate-delay="1">
-                        <div class="timeline-dot"></div>
-                        <div class="glass-card p-6 sm:p-7">
-                            <h3 class="text-base sm:text-lg font-semibold text-accent-soft">
-                                B.Tech CSE (AI & Data Engineering)
-                            </h3>
-                            <p class="text-sm sm:text-base text-slate-200/90 mt-1">
-                                Vellore Institute of Technology — VIT Vellore
-                            </p>
-                            <p class="text-[11px] sm:text-xs text-slate-400 mt-1">
-                                Current Student
-                            </p>
-                            <ul class="mt-3 text-xs sm:text-sm text-slate-200/90 space-y-1.5 list-disc pl-4">
-                                <li>Specialisation in Artificial Intelligence and Data Engineering.</li>
-                                <li>Comfortable with DBMS, web/backend development, and data analysis/reporting.</li>
-                                <li>Continuously working on C++, DSA, and ML fundamentals.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section id="contact" class="py-16 sm:py-20" data-animate>
-            <div class="max-w-3xl mx-auto">
-                <div class="section-label text-center">CONTACT</div>
-                <h2 class="section-title text-center mt-2 mb-4">Let's Connect</h2>
-                <p class="text-center text-sm sm:text-base text-slate-300/90 max-w-xl mx-auto mb-8">
-                    Open to opportunities in <span class="font-semibold">backend development</span>, 
-                    <span class="font-semibold">data engineering</span>, and general 
-                    <span class="font-semibold">software development</span>. Feel free to reach out for collaborations or discussions.
-                </p>
-
-                <div class="glass-card p-6 sm:p-8">
-                    <form class="space-y-4">
-                        <div>
-                            <label for="name" class="form-label">Name</label>
-                            <input id="name" type="text" class="form-input" placeholder="Your Name">
-                        </div>
-                        <div>
-                            <label for="email" class="form-label">Email</label>
-                            <input id="email" type="email" class="form-input" placeholder="you@example.com">
-                        </div>
-                        <div>
-                            <label for="message" class="form-label">Message</label>
-                            <textarea id="message" rows="4" class="form-input resize-none" placeholder="I'd like to talk about your projects..."></textarea>
-                        </div>
-                        <button type="submit" class="w-full sm:w-auto px-6 py-2.5 rounded-xl text-sm font-semibold bg-accent-main hover:bg-accent-dark shadow-lg shadow-accent-main/50 transition-transform hover:-translate-y-0.5">
-                            Send Message
-                        </button>
-                    </form>
-
-                    <div class="flex justify-center gap-5 mt-8 text-2xl">
-                        <!-- Replace these with your actual links when ready -->
-                        <a href="https://linkedin.com/in/your-profile" target="_blank" class="social-link">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/your-username" target="_blank" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="mailto:youremail@example.com" class="social-link">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="border-t border-white/5 py-6 mt-6 text-center text-[11px] sm:text-xs text-slate-400/90">
-        <p>&copy; 2025 Kartikay Agarwal. Built with Tailwind CSS & a lot of curiosity.</p>
-    </footer>
-
-    <!-- Custom JS -->
-    <script src="script.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
